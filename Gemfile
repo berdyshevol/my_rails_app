@@ -73,3 +73,5 @@ end
 group :production do
   gem "pg"
 end
+
+gem "ruby-lsp", "~> 0.3.8", :group => :development
