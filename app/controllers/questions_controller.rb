@@ -1,5 +1,10 @@
 class QuestionsController < ApplicationController
   skip_before_action :verify_authenticity_token
+
+  def index
+    @questions = Question.all
+  end
+
   def create
     Question.create(
       body: params[:questions][:body],
@@ -21,5 +26,9 @@ class QuestionsController < ApplicationController
   def destroy
     @question = Question.find(params[:id])
     @question.destroy
+  end
+
+  def show
+    @question = Question.find(params[:id])
   end
 end
