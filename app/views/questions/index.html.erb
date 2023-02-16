@@ -1,4 +1,10 @@
 <h2>Questions</h2>
+
 <% @questions.each do |question| %>
- <p>Queston <%= question.id %></p>
+ <p>
+  <%= link_to "Question #{question.id}", "/questions/#{question.id}"%>
+  <span>
+    <%=link_to "Link to #{question.id} with path helper ", question_path(id: question.id)%>
+    </span>
+</p>
 <% end %>
