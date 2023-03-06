@@ -1,25 +1,25 @@
 class QuestionsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
 
   def index
     @questions = Question.all
   end
 
   def create
-    Question.create(
-      body: params[:questions][:body],
-      user_id: params[:questions][:user_id]
-    )
+    question =
+      Question.create(
+        body: params[:question][:body],
+        user_id: params[:question][:user_id]
+      )
 
-    # redirect_to "/"
-    render text: "Super!"
+    redirect_to question_path(question)
   end
 
   def update
     @question = Question.find(params[:id])
     @question.update(
-      body: params[:questions][:body],
-      user_id: params[:questions][:user_id]
+      body: params[:question][:body],
+      user_id: params[:question][:user_id]
     )
   end
 
@@ -30,5 +30,9 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+  end
+
+  def new
+    @question = Question.new
   end
 end

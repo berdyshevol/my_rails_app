@@ -1,0 +1,20 @@
+<h2>New Question</h2>
+
+<form action="/questions" method="post" rows="5">
+  <p><label for="question[body]">Question Text</label></p>
+  <p><textarea name="question[body]"></textarea></p>
+  <p><label for="question[user_id]">User Id</label></p>
+  <p><input type="number" name="question[user_id]]"></p>
+  <p><input type="submit" value="Create"></p>
+</form>
+
+<%= form_with model: @question do |form| %>
+ <p><%= form.label :body, "Question text"%></p>
+ <p><%= form.text_area :body, rows: 5%></p>
+
+ <p><%= form.label :user_id %></p>
+ <p><%= form.text_field :user_id %></p>
+
+ <p><%= form.submit "Create" %></p>
+
+ <% end%>
